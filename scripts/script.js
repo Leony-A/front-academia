@@ -152,9 +152,9 @@ function closeConfirmModal() {
     confirmCallback = null;
 }
 
-function editaragendamento(id) {
+function editarAgendamento(id) {
     
-    let endpoint = baseURL+"/"+id;
+    let endpoint = baseURL+"/agendamento/"+id;
 
     axios.get(endpoint, {
         headers: {
@@ -162,15 +162,16 @@ function editaragendamento(id) {
         }
     })
         .then((response) => {
-            const agendamento = response.data[0];
+            console.log(response)
+            const agendamento = response.data;
             if (!agendamento) throw new Error('agendamento não encontrado');
             
             openForm();
             document.getElementById('usuario').value = agendamento.usuario;
-            document.getElementById('treino').value = agendamento.treino;
+            document.getElementById('treino').value = agendamento.treino.id_treino;
             document.getElementById('data').value = agendamento.data;
             document.getElementById('horario').value = agendamento.horario;
-            document.getElementById('status').value = agendamento.status;
+            document.getElementById('status').value = agendamento.status.id_status;
 
             document.getElementById('formTitle').textContent = 'Editar agendamento';
             document.querySelector('.buttonCad').textContent = 'Gravar Alterações';
@@ -225,7 +226,7 @@ console.log(endpoint)
             });
     }
     else if (isEditing == true){{
-        endpoint = baseURL+ "/" + editId
+        endpoint = baseURL+ "/agendamento/" + editId
         
 
         axios.put(endpoint, agendamento, {
@@ -276,7 +277,6 @@ function listarSelectStatus(){
 
 function listarSelectTreino(){
     let endpoint = baseURL+"/treino"
-        console.log(endpoint);
 
 
     axios.get(endpoint, {
@@ -285,7 +285,6 @@ function listarSelectTreino(){
         }
     })
         .then((response) => {
-            console.log(response);
             const selectTreino = document.getElementById('treino');
             selectTreino.innerHTML = ''; // Limpa o conteúdo existente no select
             response.data.forEach((item) => {
@@ -303,3 +302,4 @@ function listarSelectTreino(){
             console.error(error);
         });
 }
+
