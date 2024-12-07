@@ -51,10 +51,10 @@ function closeConfirmModal() {
     confirmCallback = null;
 }
 
-function excluiragendamento(id, nome) {
-    openConfirmModal(`Tem certeza que deseja excluir o agendamento "${nome}"?`, () => {
+function excluirAgendamento(id,usuario) {
+    openConfirmModal(`Tem certeza que deseja excluir o agendamento "${id} - ${usuario}" ?`, () => {
         
-        let endpoint = ""
+        let endpoint = baseURL+"/agendamento/deletar/"+id
         
         axios.delete(endpoint, {
             headers: {
@@ -62,7 +62,7 @@ function excluiragendamento(id, nome) {
             }
         })
             .then(() => {
-                showToast(`agendamento "${nome}" excluído com sucesso!`, 'success');
+                showToast(`agendamento "${id}" excluído com sucesso!`, 'success');
                 listarAgendametos();
             })
             .catch((error) => {
@@ -97,7 +97,7 @@ function listarAgendametos() {
                         <button class="buttonAcoes" onclick="editarAgendamento(${agendamento.id_agendamento})">
                             <img src="https://cdn-icons-png.flaticon.com/512/1159/1159633.png" alt="Editar">
                         </button>
-                        <button class="buttonAcoes" onclick="excluirAgendamento(${agendamento.id_agendamento}, '${agendamento.NOME}')">
+                        <button class="buttonAcoes" onclick="excluirAgendamento(${agendamento.id_agendamento}, '${agendamento.usuario}')">
                             <img src="https://cdn-icons-png.flaticon.com/512/1214/1214428.png" alt="Excluir">
                         </button>
                     </td>

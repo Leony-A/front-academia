@@ -68,6 +68,15 @@
         </table>
     </main>
     <div id="toastContainer"></div>
+    <div id="confirmModal" class="modal hidden">
+        <div class="modalContent">
+            <h3 id="confirmMessage">Tem certeza que deseja excluir este item?</h3>
+            <div id="controlButtons">
+                <button id="confirmYes" class="buttonCad">Sim</button>
+                <button id="confirmNo" class="buttonCancel" onclick="closeConfirmModal()">Não</button>
+            </div>
+        </div>
+    </div>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="scripts/script.js"></script>
 </body>
