@@ -1,3 +1,328 @@
 body {
-    background-image: linear-gradient(to left, rgba(0, 0, 0, 0.3), rgba(255, 0, 0, 0.3));
+    background-image: linear-gradient(
+    to right,
+    rgb(0, 0, 0) 0%,
+    rgba(20, 20, 20, 1) 25%,
+    rgba(0, 4, 255, 0.76) 75%,
+    black 100%
+);
 }
+/* Container geral */
+.main-content {
+    max-width: 900px;
+    margin: 20px auto;
+    padding: 30px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: white;
+    opacity: 0.9;
+}
+
+/* Botao castrar e toggle on/off para definir a api */
+.controles{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+/* cor do titulo para informar o alternar entre o  backend */ 
+.titulo_alternar_backend{
+    color: #5a6785;
+}
+
+/* Estilo do texto ao lado do toggle */
+#apiLabel {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+/* Botão principal para abrir o modal */
+.buttonOpenModal {
+    background-color: #6c7a98;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+.buttonPesq {
+    background-color: #6c7a98;
+    color: #fff;
+    padding: 5px 5px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+.buttonOpenModal:hover {
+    background-color: #5a6785;
+}
+
+/* Modal estilizado */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    visibility: hidden;
+    opacity: 0;
+    transition: all 0.3s ease-in-out;
+}
+
+.modalContent {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    width: 400px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.modal.visible {
+    visibility: visible;
+    opacity: 1;
+}
+
+.hidden {
+    display: none;
+}
+
+/* Tabela de dados */
+#tableAgendamento{
+    border: 1;
+    margin-top: 20px;
+    width: 100%;
+    text-align: left;
+}
+
+/* Botoes do Form Produto Cadastrar e Cancelar */
+#controlButtons{
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+/* Formulário */
+.formAgendamento label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.inputPesq{
+    width: 7%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 15px;   
+}
+
+.formAgendamento input,
+.formAgendamento select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+
+/* Botões no formulário */
+.buttonCad, .buttonCancel {
+    width: 48%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.buttonCad {
+    background-color: #0a9a16;
+    color: white;
+}
+
+.buttonCad:hover {
+    background-color: #086310;
+}
+
+.buttonCancel {
+    background-color: #d9534f;
+    color: white;
+}
+
+.buttonCancel:hover {
+    background-color: #c9302c;
+}
+
+/* Tabela de Produtos */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: Arial, sans-serif;
+    margin-top: 20px;
+}
+
+thead th {
+    background-color: black;
+    color: white;
+    padding: 10px;
+    text-align: left;
+    font-size: 16px;
+    border: 2px solid #000;
+}
+
+tbody td {
+    padding: 10px;
+    text-align: left;
+    border: 2px solid #000;
+    background-color: white;
+    font-size: 14px;
+}
+
+/* Botões de ação na tabela */
+.buttonAcoes {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+}
+
+.buttonAcoes img {
+    width: 20px;
+    height: 20px;
+}
+
+/* Estilo do container de notificações */
+#toastContainer {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* Estilo das notificações */
+.toast {
+    padding: 15px 20px;
+    border-radius: 5px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #fff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    animation: fadeOut 4s forwards;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+/* Animação para sumir */
+@keyframes fadeOut {
+    0% {
+        opacity: 1;
+    }
+    90% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+/* Notificações de sucesso */
+.toast.success {
+    background-color: #28a745;
+}
+
+/* Notificações de erro */
+.toast.error {
+    background-color: #dc3545;
+}
+
+/* Notificações de informação */
+.toast.info {
+    background-color: #17a2b8;
+}
+
+/* Modal de confirmação */
+#confirmModal .modalContent {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    width: 300px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    text-align: center;
+}
+
+#confirmModal .modalContent h3 {
+    margin-bottom: 20px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+/* Toggle switch container */
+.toggleSwitch {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+/* Estilo do switch */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 24px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: 0.4s;
+    border-radius: 24px;
+}
+
+.slider:before {
+    position: absolute;
+    content: '';
+    height: 18px;
+    width: 18px;
+    left: 3px;
+    bottom: 3px;
+    background-color: white;
+    transition: 0.4s;
+    border-radius: 50%;
+}
+
+input:checked + .slider {
+    background-color: #6c7a98;
+}
+
+input:checked + .slider:before {
+    transform: translateX(26px);
+}
+
+
