@@ -173,7 +173,7 @@ function editarAgendamento(id) {
             document.getElementById('horario').value = agendamento.horario;
             document.getElementById('status').value = agendamento.status.id_status;
 
-            document.getElementById('formTitle').textContent = 'Editar agendamento';
+            document.getElementById('formTitle').textContent = 'Editar Agendamento';
             document.querySelector('.buttonCad').textContent = 'Gravar Alterações';
 
             isEditing = true;

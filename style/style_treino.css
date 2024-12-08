@@ -119,7 +119,7 @@ body {
 }
 
 /* Tabela de dados */
-#tableAgendamento{
+#tableTreino{
     border: 1;
     margin-top: 20px;
     width: 100%;
@@ -134,7 +134,7 @@ body {
 }
 
 /* Formulário */
-.formAgendamento label {
+.formTreino label {
     display: block;
     margin-bottom: 5px;
     font-weight: bold;
@@ -148,8 +148,8 @@ body {
     margin-bottom: 15px;   
 }
 
-.formAgendamento input,
-.formAgendamento select {
+.formTreino input,
+.formTreino select {
     width: 100%;
     padding: 8px;
     border: 1px solid #ccc;
